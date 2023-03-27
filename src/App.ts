@@ -5,6 +5,8 @@ import reviewController from './endPoints/reviewController';
 import roomController from './endPoints/roomController';
 import userController from './endPoints/userController';
 
+import hoteSchema from './database/hoteSchema';
+
 class App {
   public express
 

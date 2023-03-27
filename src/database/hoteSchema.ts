@@ -1,15 +1,66 @@
 import { Schema, model } from "mongoose"
 
+interface IHotelInfo {
+    mainPhoto: string,
+    description: string,
+    services: Array<string>,
+    photoAlbum: Array<string>
+}
+
 interface IHotel {
     name: string,
     country: string,
-    city: string
+    city: string,
+    rating: number,
+    stars: number,
+    info: IHotelInfo
 }
 
-const hotelSchema = new Schema<IHotel>({
-    name: {type: String, required: true},
-    country: {type: String, required: true},
-    city: {type: String, required: true}
+const HotelInfoSchema = new Schema<IHotelInfo>({
+    mainPhoto: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    services: {
+        type: [String],
+        required: true
+    },
+    photoAlbum: {
+        type: [String],
+        required: true
+    }
 })
 
-export default model<IHotel>("hotel", hotelSchema)
+const HotelSchema = new Schema<IHotel>({
+    name: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: Number,
+        required: true
+    },
+    stars: {
+        type: Number,
+        required: true
+    },
+    info: {
+        type: HotelInfoSchema,
+        required: true
+    }
+
+})
+
+export default model<IHotel>("hotel", HotelSchema)
