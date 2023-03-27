@@ -63,4 +63,4 @@ const HotelSchema = new Schema<IHotel>({
 
 })
 
-export default model<IHotel>("hotel", HotelSchema)
+export default model<IHotel>("hotels", HotelSchema)
