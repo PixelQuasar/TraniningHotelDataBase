@@ -5,7 +5,7 @@ const hotelController = express.Router()
 
 hotelController.get('/getAllHotels', async (req: express.Request, res: express.Response) => {
     try {
-        const mongoResponce = hotelSchema.find( {} ).lean().exec()
+        const mongoResponce = await hotelSchema.find( {} ).lean().exec()
         res.send(mongoResponce).status(200)
     } 
     catch (error) {
@@ -20,24 +20,28 @@ hotelController.post('/addHotel', async (req: express.Request, res: express.Resp
         if (!body.name) throw "name empty"
         if (!body.country) throw "country empty"
         if (!body.city) throw "city empty"
+        if (!body.stars) throw "stars empty"
+
         const content = {
-            name: body.name ? body.name : ,
-            country: nody.name ? body.name,
-            city: string,
-            rating: number,
-            stars: number,
+            name: body.name,
+            country: body.country,
+            city: body.city,
+            rating: 0,
+            stars: body.stars,
             info: {
-                mainPhoto: string,
-                description: string,
-                services: Array<string>,
-                photoAlbum: Array<string>
+                mainPhoto: body.info.mainPhoto ? body.info.mainPhoto : "",
+                description: body.info.description ? body.info.description : "",
+                services: body.info.services ? body.info.services : [],
+                photoAlbum: body.info.photoAlbum ? body.info.photoAlbum : []
             }
         }
-        const newHotel = new hotelSchema(req.body)
+        const newHotel = new hotelSchema(content)
+        const saveResponse = await newHotel.save()
+        res.send(saveResponse).status(200)
     }
     catch (error) {
         console.log(error)
-        res.send().status()
+        res.send(error).status(500)
     }
 })
 
