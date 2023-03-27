@@ -16,7 +16,7 @@ hotelController.get('/getAllHotels', async (req: express.Request, res: express.R
 
 hotelController.get('/getHotels', async (req: express.Request, res: express.Response) => {
     try {
-        const filter = JSON.parse(req.params.filter) 
+        const filter = req.body
         const mongoResponce = await hotelSchema.find( filter ? filter : {} ).lean().exec()
         res.send(mongoResponce).status(200)
     } 
@@ -41,10 +41,10 @@ hotelController.post('/addHotel', async (req: express.Request, res: express.Resp
             rating: 0,
             stars: body.stars,
             info: {
-                mainPhoto: body.info.mainPhoto ? body.info.mainPhoto : "",
-                description: body.info.description ? body.info.description : "",
-                services: body.info.services ? body.info.services : [],
-                photoAlbum: body.info.photoAlbum ? body.info.photoAlbum : []
+                mainPhoto: body.mainPhoto ? body.mainPhoto : "",
+                description: body.description ? body.description : "",
+                services: body.services ? body.services : [],
+                photoAlbum: body.photoAlbum ? body.photoAlbum : []
             }
         }
         const newHotel = new hotelSchema(content)
