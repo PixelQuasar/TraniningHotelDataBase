@@ -19,10 +19,10 @@ class App {
     this.express.use(bodyParser.json())
     this.express.use(bodyParser.urlencoded({ extended: true }))
 
-    this.express.use('api/hotelDB/hotels', hotelController)
-    this.express.use('api/hotelDB/rooms', roomController)
-    this.express.use('api/hotelDB/users', userController)
-    this.express.use('/review', reviewController)
+    this.express.use('/api/hotelDB/hotels', hotelController)
+    this.express.use('/api/hotelDB/rooms', roomController)
+    this.express.use('/api/hotelDB/users', userController)
+    this.express.use('/api/hotelDB/review', reviewController)
   }
 }
 
