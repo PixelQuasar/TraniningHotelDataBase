@@ -1,5 +1,5 @@
 import * as express from 'express'
-import hotelSchema from 'src/database/hotelSchema'
+import hotelSchema from '../database/hotelSchema'
 
 const hotelController = express.Router()
 
@@ -10,7 +10,19 @@ hotelController.get('/getAllHotels', async (req: express.Request, res: express.R
     } 
     catch (error) {
         console.log(error)
-        res.send().status(503)
+        res.send(error).status(503)
+    } 
+})
+
+hotelController.get('/getHotels', async (req: express.Request, res: express.Response) => {
+    try {
+        const filter = JSON.parse(req.params.filter) 
+        const mongoResponce = await hotelSchema.find( filter ? filter : {} ).lean().exec()
+        res.send(mongoResponce).status(200)
+    } 
+    catch (error) {
+        console.log(error)
+        res.send(error).status(503)
     } 
 })
 
