@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs", 
+    "strict": true,
+    "baseUrl": "./",
+    "outDir": "./build",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+        "node_modules/@types"
+    ],
+    "lib": [
+      "ES2021.String"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modues"
+  ]
+}
