@@ -1,3 +1,5 @@
 import * as express from 'express'
 
-const router = express.Router()
+const hotelController = express.Router()
+
+export default hotelController
