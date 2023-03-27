@@ -23,6 +23,7 @@ class App {
     this.express.use('/api/hotelDB/rooms', roomController)
     this.express.use('/api/hotelDB/users', userController)
     this.express.use('/api/hotelDB/review', reviewController)
+    
   }
 }
 
