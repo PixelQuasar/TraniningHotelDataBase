@@ -5,25 +5,30 @@ const hotelController = express.Router()
 
 hotelController.get('/getAllHotels', async (req: express.Request, res: express.Response) => {
     try {
-        const mongoResponce = await hotelSchema.find( {} ).lean().exec()
-        res.send(mongoResponce).status(200)
-    } 
+        const page = req.body.page ? parseInt(req.params.page) : 1
+        const array = await hotelSchema.find({}).lean().exec()
+
+        const pageNumber = Math.ceil(array.length / 20)
+        res.send({ pages: pageNumber, payload: array.slice((page - 1) * 20, 20) }).status(200)
+    }
     catch (error) {
         console.log(error)
-        res.send(error).status(503)
-    } 
+        res.send(error).status(500)
+    }
 })
 
 hotelController.get('/getHotels', async (req: express.Request, res: express.Response) => {
     try {
-        const filter = req.body
-        const mongoResponce = await hotelSchema.find( filter ? filter : {} ).lean().exec()
-        res.send(mongoResponce).status(200)
-    } 
-    catch (error) {
+        const filter = req.body.filter ? req.body.filter : {}
+        const page = req.body.page ? parseInt(req.body.page) : 1
+
+        const array = await hotelSchema.find(filter ? filter : {}).lean().exec()
+        const pageNumber = Math.ceil(array.length / 20)
+        res.send({ pages: pageNumber, payload: array.slice((page - 1) * 20, 20) }).status(200)
+    } catch (error) {
         console.log(error)
-        res.send(error).status(503)
-    } 
+        res.send(error).status(500)
+    }
 })
 
 hotelController.post('/addHotel', async (req: express.Request, res: express.Response) => {
@@ -51,6 +56,22 @@ hotelController.post('/addHotel', async (req: express.Request, res: express.Resp
         const saveResponse = await newHotel.save()
         res.send(saveResponse).status(200)
     }
+    catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
+hotelController.post('/deleteByFilter', async (req: express.Request, res: express.Response) => {
+    try {
+        const filter = req.body.filter
+        if (filter) {
+            const mongoResponce = await hotelSchema.deleteMany(filter)
+            res.send(mongoResponce).status(200)
+            return
+        }
+        res.send("No filter").status(404)
+    } 
     catch (error) {
         console.log(error)
         res.send(error).status(500)
