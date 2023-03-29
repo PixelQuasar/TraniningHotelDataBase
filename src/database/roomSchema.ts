@@ -11,6 +11,7 @@ interface IRoom {
     price: number,
     name: string,
     type: string,
+    photosURL: Array<String>
     roomAmount: number,
     peopleCapacity: number,
     beds: IBeds
@@ -32,7 +33,38 @@ const BedsSchema = new Schema<IBeds>({
 })
 
 const RoomSchema = new Schema<IRoom>({
-
+    hotelId: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    photosURL: {
+        type: [String],
+        required: true
+    },
+    roomAmount: {
+        type: Number,
+        required: true
+    },
+    peopleCapacity: {
+        type: Number,
+        required: true
+    },
+    beds: {
+        type: BedsSchema,
+        required: true
+    }
 })
 
 export default model<IRoom>('rooms', RoomSchema)

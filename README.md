@@ -20,21 +20,21 @@ API for your projects
 
 ### /getAllHotels
 
-parameters:
+### parameters:
     page - number of requested page
 
-body:
+### body:
     none
 
-response: 
+### response: 
     [ Array ]
 
 ### /getHotels
 
-parameters: 
+### parameters: 
     page - number of requested page
 
-body: 
+### body: 
     filter {
 
     }
