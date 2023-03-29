@@ -23,7 +23,7 @@ class App {
     this.express.use('/api/hotelDB/users', userController)
     this.express.use('/api/hotelDB/review', reviewController)
 
-    this.express.use('/api/productDB/products', productController)
+    this.express.use('/api/shopDB/products', productController)
     
   }
 }
