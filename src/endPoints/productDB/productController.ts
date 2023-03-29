@@ -65,11 +65,11 @@ productController.post('/addProduct', async (req: express.Request, res: express.
     }
 })
 
-hotelController.post('/deleteByFilter', async (req: express.Request, res: express.Response) => {
+productController.post('/deleteByFilter', async (req: express.Request, res: express.Response) => {
     try {
         const filter = req.body.filter
         if (filter) {
-            const mongoResponce = await hotelSchema.deleteMany(filter)
+            const mongoResponce = await productSchema.deleteMany(filter)
             res.send(mongoResponce).status(200)
             return
         }
