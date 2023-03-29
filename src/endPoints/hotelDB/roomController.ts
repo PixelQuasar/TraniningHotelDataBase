@@ -42,7 +42,7 @@ roomController.post('/addRoom', async (req: express.Request, res: express.Respon
             description: body.description,
             type: body.type,
             photosURL: body.photosURL,
-            roomAmount: body.roomAbount,
+            roomAmount: body.roomAmount,
             peopleCapacity: body.peopleCapacity,
             beds: {
                 oneDoubleBed: body.oneDoubleBed,

@@ -97,10 +97,13 @@ response:
     photosURL: Array<String>
     roomAmount: number,
     peopleCapacity: number,
-    beds: IBeds
+    beds:
+        oneDoubleBed: boolean,
+        twoSingleBeds: boolean,
+        sofaBed: boolean
 
-## GET /getAllHotels
-Returns all hotels in database
+## GET /getAllRooms
+Returns all rooms in database
 
 ### parameters:
     page - number of requested page
@@ -112,7 +115,7 @@ Returns all hotels in database
     [ Array ]
 
 ## GET /getHotels
-Returns hotels in database by filter
+Returns rooms in database by filter
 
 ### parameters: 
     page - number of requested page
@@ -127,30 +130,33 @@ Returns hotels in database by filter
 response: 
     [ Array ]
 
-## POST /addHotel
-Add new hotel
+## POST /addRoom
+Add new room
 
 ### parameters: 
     none
 
 ### body: 
     {
-        "name": "demo",
-        "country": "Kazakhstan",
-        "city": "Almaty",
-        "stars": 4,
-        "mainPhoto": "https://linkToPhoto",
-        "description": "that's demo hotel description",
-        "services": ["WIFI", "Something else"],
-        "photoAlbum": ["https://linkToPhoto1", "https://linkToPhoto2", "https://linkToPhoto3"]
+        "hotelId": "myHotelId",
+        "price": 99.99,
+        "name": "cozy demo room",
+        "description": "description of demo room",
+        "type": "type of my room",
+        "photosUrl": ["https://pic1", "https://pic2", "https://pic3"],
+        "roomAmount": 5,
+        "peopleCapacity": 3,
+        "oneDoubleBed": true,
+        "twoSingleBeds": false,
+        "sofaBed": true
     }
 
 response: 
-    Hotel
+    Room
 
 
 ## POST /deleteByFilter
-Delete hotel by filter
+Delete room by filter
 
 ### parameters: 
     none
@@ -163,7 +169,7 @@ Delete hotel by filter
     }
 
 response: 
-    Hotel
+    Room
 
 
 
