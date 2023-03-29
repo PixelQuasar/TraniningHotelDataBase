@@ -1,10 +1,12 @@
 # TraniningHotelDataBase
 
+API for your projects
+
 # api/HotelDB
 
-# api/hotelDB/hotels
+## api/hotelDB/hotels
 
-## schema: 
+### schema: 
     name: string,
     country: string,
     city: string,
@@ -16,12 +18,26 @@
         services: Array<string>,
         photoAlbum: Array<string>
 
-## /getAllHotels
+### /getAllHotels
 
-# parameters:
+parameters:
     page - number of requested page
 
-# response: 
+body:
+    none
+
+response: 
     [ Array ]
 
-    
+### /getHotels
+
+parameters: 
+    page - number of requested page
+
+body: 
+    filter {
+
+    }
+
+response: 
+    [ Array ]
