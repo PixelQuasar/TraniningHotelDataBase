@@ -5,6 +5,7 @@ import reviewController from './endPoints/hotelDB/reviewController';
 import roomController from './endPoints/hotelDB/roomController';
 import userController from './endPoints/hotelDB/userController';
 import productController from './endPoints/productDB/productController';
+import cors from 'cors'
 
 class App {
   public express
@@ -17,6 +18,7 @@ class App {
   private mountRoutes (): void {
     this.express.use(bodyParser.json())
     this.express.use(bodyParser.urlencoded({ extended: true }))
+    this.express.use(cors())
 
     this.express.use('/api/hotelDB/hotels', hotelController)
     this.express.use('/api/hotelDB/rooms', roomController)
