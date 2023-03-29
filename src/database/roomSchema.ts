@@ -10,6 +10,7 @@ interface IRoom {
     hotelId: string,
     price: number,
     name: string,
+    description: string,
     type: string,
     photosURL: Array<String>
     roomAmount: number,
@@ -42,6 +43,10 @@ const RoomSchema = new Schema<IRoom>({
         required: true,
     },
     name: {
+        type: String,
+        required: true
+    },
+    description: {
         type: String,
         required: true
     },
