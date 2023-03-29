@@ -17,6 +17,20 @@ productController.get('/getAllProducts', async (req: express.Request, res: expre
     }
 })
 
+productController.get('/getProducts', async (req: express.Request, res: express.Response) => {
+    try {
+        const filter = req.body.filter ? req.body.filter : {}
+        const page = req.body.page ? parseInt(req.body.page) : 1
+
+        const array = await productSchema.find(filter ? filter : {}).lean().exec()
+        const pageNumber = Math.ceil(array.length / 20)
+        res.send({ pages: pageNumber, payload: array.slice((page - 1) * 20, 20) }).status(200)
+    } catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
 productController.post('/addProduct', async (req: express.Request, res: express.Response) => {
     try {
         const body = req.body
@@ -40,10 +54,27 @@ productController.post('/addProduct', async (req: express.Request, res: express.
             colors: body.colors,
             rating: 0
         }
+
         const newProduct = new productSchema(content)
         const saveResponse = await newProduct.save()
         res.send(saveResponse).status(200)
     }
+    catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
+hotelController.post('/deleteByFilter', async (req: express.Request, res: express.Response) => {
+    try {
+        const filter = req.body.filter
+        if (filter) {
+            const mongoResponce = await hotelSchema.deleteMany(filter)
+            res.send(mongoResponce).status(200)
+            return
+        }
+        res.send("No filter").status(404)
+    } 
     catch (error) {
         console.log(error)
         res.send(error).status(500)
