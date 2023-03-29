@@ -1,5 +1,5 @@
 import * as express from 'express'
-import roomSchema from 'src/database/roomSchema'
+import roomSchema from '../database/roomSchema'
 
 const roomController = express.Router()
 
