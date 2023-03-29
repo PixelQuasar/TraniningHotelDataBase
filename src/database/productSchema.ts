@@ -1,32 +1,52 @@
 import { Schema, model } from "mongoose";
 
 interface IProduct {
-    text: string,
-    authorId: string,
-    hotelId: string,
-    score: number,
-    dateCreated: Date
+    name: string,
+    category: string,
+    description: string,
+    photosURL: Array<String>,
+    amount: number,
+    price: number,
+    sizes: Array<String>,
+    colors: Array<String>,
+    rating: number
 }
 
 const ProductSChema = new Schema<IProduct>({
-    text: {
+    name: {
         type: String,
         required: true
     },
-    authorId: {
+    category: {
         type: String,
         required: true,
     },
-    hotelId: {
+    description: {
         type: String,
         required: true
     },
-    score: {
+    photosURL: {
+        type: [String],
+        required: true
+    },
+    amount: {
         type: Number,
         required: true
     },
-    dateCreated: {
-        type: Date,
+    price: {
+        type: Number,
+        required: true
+    },
+    sizes: {
+        type: [String],
+        required: true
+    },
+    colors: {
+        type: [String],
+        required: true
+    },
+    rating: {
+        type: Number,
         required: true
     }
 })

@@ -1,5 +1,5 @@
 import * as express from 'express'
-import hotelSchema from '../database/hotelSchema'
+import hotelSchema from '../../database/hotelSchema'
 
 const hotelController = express.Router()
 
