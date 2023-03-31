@@ -18,6 +18,18 @@ API for your projects
         services: Array<string>,
         photoAlbum: Array<string>
 
+## GET /getHotelById/:hotelId
+Returns one hotel by id
+
+### parameters;: 
+    hotelId - id of requested hotel
+
+### body: 
+    none
+
+### response: 
+    Hotel
+
 ## GET /getAllHotels
 Returns all hotels in database
 
@@ -101,6 +113,18 @@ response:
         oneDoubleBed: boolean,
         twoSingleBeds: boolean,
         sofaBed: boolean
+
+## GET /getRoomById/:roomId
+Returns room by id
+
+### parameters
+    roomId - id of requested room
+
+### body
+    none
+
+### response:
+    Room
 
 ## GET /getAllRooms
 Returns all rooms in database
