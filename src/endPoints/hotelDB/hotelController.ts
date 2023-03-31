@@ -3,6 +3,20 @@ import hotelSchema from '../../database/hotelSchema'
 
 const hotelController = express.Router()
 
+hotelController.get('/getHotelById/:hotelId', async (req: any, res: express.Response) => {
+    try {
+        const id = req.params.hotelId
+
+        const hotelFromMongo = await hotelSchema.findOne({_id: id}).lean().exec()
+
+        res.send(hotelFromMongo).status(200)
+    }
+    catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+}) 
+
 hotelController.get('/getAllHotels', async (req: express.Request, res: express.Response) => {
     try {
         const page = req.body.page ? parseInt(req.params.page) : 1
