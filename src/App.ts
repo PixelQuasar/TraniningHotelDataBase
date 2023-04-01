@@ -18,6 +18,7 @@ class App {
   private mountRoutes (): void {
     this.express.use(bodyParser.json())
     this.express.use(bodyParser.urlencoded({ extended: true }))
+    
     this.express.use((req, res, next) => {
       res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
       res.header(

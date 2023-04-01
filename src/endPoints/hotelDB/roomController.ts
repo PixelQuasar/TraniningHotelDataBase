@@ -62,7 +62,7 @@ roomController.post('/addRoom', async (req: express.Request, res: express.Respon
 
 roomController.post('/deleteByFilter', async (req: express.Request, res: express.Response) => {
     try {
-        const filter = req.body.filter
+        const filter = req.params
         if (filter) {
             const mongoResponce = await roomSchema.deleteMany(filter).lean().exec()
             res.send(mongoResponce).status(200)

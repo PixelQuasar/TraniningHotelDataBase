@@ -19,7 +19,7 @@ hotelController.get('/getAllHotels', async (req: express.Request, res: express.R
 
 hotelController.get('/getHotels', async (req: express.Request, res: express.Response) => {
     try {
-        const filter = req.body.filter ? req.body.filter : {}
+        const filter = req.params ? req.params : {}
         const page = req.body.page ? parseInt(req.body.page) : 1
 
         const array = await hotelSchema.find(filter ? filter : {}).lean().exec()
