@@ -3,6 +3,20 @@ import roomSchema from '../../database/roomSchema'
 
 const roomController = express.Router()
 
+roomController.get('/getRoomById/:roomId', async (req: any, res: express.Response) => {
+    try {
+        const id = req.params.roomId
+
+        const roomFromMongo = await roomSchema.findOne({_id: id}).lean().exec()
+
+        res.send(roomFromMongo).status(200)
+    }
+    catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+}) 
+
 roomController.get('/getAllRooms', async (req: express.Request, res: express.Response) => {
     try {
         const page = req.body.page ? parseInt(req.params.page) : 1
