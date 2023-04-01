@@ -46,14 +46,10 @@ Returns all hotels in database
 Returns hotels in database by filter
 
 ### parameters: 
-    page - number of requested page
+    <any value from schema> - filter value
 
 ### body: 
-    {
-        "filter" {
-
-        } 
-    }
+    none
 
 response: 
     [ Array ]
@@ -142,14 +138,10 @@ Returns all rooms in database
 Returns rooms in database by filter
 
 ### parameters: 
-    page - number of requested page
+    <any value from schema> - filter value
 
 ### body: 
-    {
-        "filter" {
-
-        } 
-    }
+    none
 
 response: 
     [ Array ]
@@ -243,11 +235,7 @@ Returns products in database by filter
     <any value from schema> - filter value
 
 ### body: 
-    {
-        "filter" {
-
-        } 
-    }
+    none
 
 response: 
     [ Array ]
