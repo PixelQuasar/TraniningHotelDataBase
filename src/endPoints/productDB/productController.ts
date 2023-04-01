@@ -3,6 +3,18 @@ import productSchema from '../../database/productSchema'
 
 const productController = express.Router()
 
+productController.get('/getProductById/:productId', async (req: express.Request, res: express.Response) => {
+    try {
+        const product = await productSchema.find({_id: req.params.productId}).lean().exec()
+
+        res.send(product).status(200)
+    }
+    catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
 productController.get('/getAllProducts', async (req: express.Request, res: express.Response) => {
     try {
         const page = req.body.page ? parseInt(req.params.page) : 1
