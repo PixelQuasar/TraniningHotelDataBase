@@ -240,7 +240,7 @@ Returns all products in database
 Returns products in database by filter
 
 ### parameters: 
-    page - number of requested page
+    <any value from schema> - filter value
 
 ### body: 
     {

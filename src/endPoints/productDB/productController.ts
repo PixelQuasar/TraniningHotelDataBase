@@ -32,11 +32,10 @@ productController.get('/getAllProducts', async (req: express.Request, res: expre
 productController.get('/getProducts', async (req: express.Request, res: express.Response) => {
     try {
         const filter = req.params ? req.params : {}
-        const page = req.body.page ? parseInt(req.body.page) : 1
 
         const array = await productSchema.find(filter ? filter : {}).lean().exec()
         const pageNumber = Math.ceil(array.length / 20)
-        res.send({ pages: pageNumber, payload: array.slice((page - 1) * 20, 20) }).status(200)
+        res.send(array).status(200)
     } catch (error) {
         console.log(error)
         res.send(error).status(500)

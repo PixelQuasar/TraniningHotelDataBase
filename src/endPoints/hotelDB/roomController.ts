@@ -38,7 +38,7 @@ roomController.get('/getRooms', async (req: express.Request, res: express.Respon
 
         const array = await roomSchema.find(filter ? filter : {}).lean().exec()
         const pageNumber = Math.ceil(array.length / 20)
-        res.send({ pages: pageNumber, payload: array.slice((page - 1) * 20, 20) }).status(200)
+        res.send(array).status(200)
     } catch (error) {
         console.log(error)
         res.send(error).status(500)
