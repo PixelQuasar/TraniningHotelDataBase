@@ -212,6 +212,18 @@ response:
     colors: Array<String>,
     rating: number
 
+## GET /getProductById/:productId
+Returns product from database by id
+
+## parameters: 
+    productId - id of the product
+
+## body:
+    none
+
+## response:
+    product
+
 ## GET /getAllProducts
 Returns all products in database
 
