@@ -63,4 +63,6 @@ const HotelSchema = new Schema<IHotel>({
 
 })
 
+HotelSchema.index({name: "text", country: "text", city: "text"})
+
 export default model<IHotel>("hotels", HotelSchema)

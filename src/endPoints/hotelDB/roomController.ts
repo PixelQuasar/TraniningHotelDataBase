@@ -48,6 +48,7 @@ roomController.get('/getRooms', async (req: express.Request, res: express.Respon
 roomController.post('/addRoom', async (req: express.Request, res: express.Response) => {
     try {
         const body = req.body
+        console.log(body.photosURL)
 
         const content = {
             hotelId: body.hotelId,

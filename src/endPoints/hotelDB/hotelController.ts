@@ -45,6 +45,20 @@ hotelController.get('/getHotels', async (req: express.Request, res: express.Resp
     }
 })
 
+hotelController.get('/searchHotels/:searchString', async (req: express.Request, res: express.Response) => {
+    try {
+        const searchString = req.params.searchString
+        console.log(searchString)
+        hotelSchema.createIndexes({name: "text", country: "text", city: "text"} as any)
+        const array = await hotelSchema.find({$text: {$search: searchString}}).exec()
+        res.send(array).status(200)
+    } catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
+
 hotelController.post('/addHotel', async (req: express.Request, res: express.Response) => {
     try {
         const body = req.body
