@@ -42,6 +42,19 @@ productController.get('/getProducts', async (req: express.Request, res: express.
     }
 })
 
+
+productController.get('/searchProducts/:searchString', async (req: express.Request, res: express.Response) => {
+    try {
+        const searchString = req.params.searchString
+        console.log(searchString)
+        const array = await productSchema.find({$text: {$search: searchString}}).exec()
+        res.send(array).status(200)
+    } catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
 productController.post('/addProduct', async (req: express.Request, res: express.Response) => {
     try {
         const body = req.body

@@ -12,7 +12,7 @@ interface IProduct {
     rating: number
 }
 
-const ProductSChema = new Schema<IProduct>({
+const ProductSchema = new Schema<IProduct>({
     name: {
         type: String,
         required: true
@@ -51,4 +51,6 @@ const ProductSChema = new Schema<IProduct>({
     }
 })
 
-export default model<IProduct>('reviews', ProductSChema)
+ProductSchema.index({name: "text", category: "text"})
+
+export default model<IProduct>('reviews', ProductSchema)

@@ -45,6 +45,19 @@ roomController.get('/getRooms', async (req: express.Request, res: express.Respon
     }
 })
 
+
+roomController.get('/searchRooms/:searchString', async (req: express.Request, res: express.Response) => {
+    try {
+        const searchString = req.params.searchString
+        console.log(searchString)
+        const array = await roomSchema.find({$text: {$search: searchString}}).exec()
+        res.send(array).status(200)
+    } catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
 roomController.post('/addRoom', async (req: express.Request, res: express.Response) => {
     try {
         const body = req.body

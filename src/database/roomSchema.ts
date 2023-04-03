@@ -72,4 +72,6 @@ const RoomSchema = new Schema<IRoom>({
     }
 })
 
+RoomSchema.index({name: "text", description: "text"})
+
 export default model<IRoom>('rooms', RoomSchema)
