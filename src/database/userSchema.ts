@@ -2,6 +2,7 @@ import { Schema, model } from "mongoose";
 
 interface IUser {
     login: string,
+    fullName: string,
     gmail?: string,
     phoneNumber?: string,
     password: string,
