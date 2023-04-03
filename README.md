@@ -51,7 +51,19 @@ Returns hotels in database by filter
 ### body: 
     none
 
-response: 
+### response: 
+    [ Array ]
+
+## GET /searchHotels/:searchString
+Searches and returns hotels by search string
+
+### parameters:
+    searchString - search string
+
+### body:
+    none
+
+### response:
     [ Array ]
 
 ## POST /addHotel
@@ -146,6 +158,18 @@ Returns rooms in database by filter
 response: 
     [ Array ]
 
+## GET /searchRooms/:searchString
+Searches and returns rooms by search string
+
+### parameters:
+    searchString - search string
+
+### body:
+    none
+
+### response:
+    [ Array ]
+
 ## POST /addRoom
 Add new room
 
@@ -238,6 +262,18 @@ Returns products in database by filter
     none
 
 response: 
+    [ Array ]
+
+## GET /searchProducts/:searchString
+Searches and returns products by search string
+
+### parameters:
+    searchString - search string
+
+### body:
+    none
+
+### response:
     [ Array ]
 
 ## POST /addProduct
