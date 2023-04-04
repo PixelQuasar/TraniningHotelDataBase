@@ -314,4 +314,91 @@ Delete product by filter
 response: 
     Product
 
+# api/hotelDB
+
+## api/hotelDB/users
+
+### Schema: 
+    login: string,
+    fullName?: string,
+    email?: string,
+    phoneNumber?: string,
+    password: string
+
+## GET users/
+get all users
+
+### parameters:
+    none
+
+### body:
+    none
+
+### response:
+    [ User ]
+
+
+## GET users/:userId
+get specific user by id
+
+### parameters:
+    userId - user's id
+
+### body:
+    none
+
+### response:
+    User
+
+
+
+## POST users/register
+register user request
+
+### parameters:
+    none
+
+### body:
+    {
+        "login": "admin",
+        "password": "qwerty123",
+        "tryPassword": "qwerty123",
+        "email": "max281115@gmai.com",
+        "phoneHumber": "+77477234220",
+        "fullName": "Maxim Yermolayev"
+    }
+
+### response: 
+    User
+
+## POST users/login
+login request
+
+### parameters:
+    none
+
+### body:
+    {
+        "login": "login",
+        "password": "password"
+    }
+
+### response:
+    User
+
+## POST users/deleteByFilter
+delete users request
+
+### parameters:
+    none
+
+### body:
+    {
+        "filter": {
+
+        }
+    }
+
+### response:
+    [ User ]
 
