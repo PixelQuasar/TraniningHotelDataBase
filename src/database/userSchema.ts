@@ -5,7 +5,7 @@ interface IUser {
     fullName?: string,
     email?: string,
     phoneNumber?: string,
-    password: string,
+    password: string
 }
 
 const UserSchema = new Schema({
