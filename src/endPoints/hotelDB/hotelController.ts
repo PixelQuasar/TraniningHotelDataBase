@@ -45,6 +45,18 @@ hotelController.get('/getHotels', async (req: express.Request, res: express.Resp
     }
 })
 
+hotelController.post('/postHotelFilter', async (req: express.Request, res: express.Response) => {
+    try {
+        const filter = req.body.filter
+
+        const array = await hotelSchema.find(filter ? filter : {}).lean().exec()
+        res.send(array).status(200)
+    } catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
 hotelController.get('/searchHotels/:searchString', async (req: express.Request, res: express.Response) => {
     try {
         const searchString = req.params.searchString
