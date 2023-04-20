@@ -1,5 +1,5 @@
 import * as express from 'express';
-import pizzaSchema from 'src/database/pizzaSchema';
+import pizzaSchema from '../../database/pizzaSchema';
 const pizzaController = express.Router()
 
 pizzaController.get('/', async (req: express.Request, res: express.Response) => {
