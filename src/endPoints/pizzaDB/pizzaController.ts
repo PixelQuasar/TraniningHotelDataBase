@@ -35,6 +35,19 @@ pizzaController.get('/category/:type', async (req: express.Request, res: express
     }
 })
 
+pizzaController.get('/searchProducts/:searchString', async (req: express.Request, res: express.Response) => {
+    try {
+        const searchString = req.params.searchString
+        console.log(searchString)
+        pizzaSchema.createIndexes({name: "text", type: "text"} as any)
+        const array = await pizzaSchema.find({$text: {$search: searchString}}).exec()
+        res.send(array).status(200)
+    } catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
 pizzaController.post('/addProduct', async (req: express.Request, res: express.Response) => {
     try {
         const body = req.body
