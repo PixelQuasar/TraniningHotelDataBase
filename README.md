@@ -2,6 +2,14 @@
 
 API for your projects
 
+
+## Navigate:
+
+(Hotel database)[api/hotelDB]
+(Shop database)[api/shopDB]
+(Users database)[users]
+(Pizza database)[api/shopDB]
+
 # api/hotelDB
 
 ## api/hotelDB/hotels
@@ -314,7 +322,7 @@ Delete product by filter
 response: 
     Product
 
-# api/hotelDB
+# users
 
 ## api/hotelDB/users
 
@@ -401,4 +409,92 @@ delete users request
 
 ### response:
     [ User ]
+
+# api/pizzaDB
+
+### Schema (Product): 
+    name: string,
+    type: "burger" | "pizza" | "fries"
+    time?: number,
+    sizes?: Array<string>,
+    price: number,
+    photosURL?: Array<string>
+
+## GET pizzaDB/products/
+get all products
+
+### parameters:
+    none
+
+### body:
+    none
+
+### response:
+    [ Product ]
+
+## GET pizzaDB/products/:id
+get specific product
+
+### parameters:
+    id - id of product
+
+### body:
+    none
+
+### response:
+    Product
+
+## GET pizzaDB/products/category/:type
+get products of category (for example, only pizza or only burgers)
+
+### parameters:
+    type - type of category
+
+### body:
+    none
+
+### response:
+    [ Product ]
+
+
+## GET pizzaDB/products/searchProducts/:searchString
+search for products
+
+### parameters:
+    searchString - search string
+
+### body:
+    none
+
+### response:
+    [ Product ]
+
+## POST pizzaDB/products/addProduct
+add new product
+
+### parameters:
+    none
+
+### body:
+    Product
+
+### response:
+    Product
+
+
+## POST pizzaDB/products/deleteByFilter
+delete products by filter
+
+### parameters:
+    none
+
+### body:
+    {
+        filter: {
+            ...
+        }
+    }
+
+### response:
+    [ Product ]
 
