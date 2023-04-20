@@ -1,8 +1,16 @@
 import * as express from 'express';
+import pizzaSchema from 'src/database/pizzaSchema';
 const pizzaController = express.Router()
 
-pizzaController.post('/', async (req: express.Request, res: express.Response) => {
-    res.send(200)
+pizzaController.get('/', async (req: express.Request, res: express.Response) => {
+    try {
+        const productArray = pizzaSchema.find({}).lean().exec()
+        res.send(productArray).send(200)
+    }
+    catch (error) {
+        console.log("PIZZACONTROLLER:", error)
+        res.send(error).status(503)
+    }
 })
 
 export default pizzaController
