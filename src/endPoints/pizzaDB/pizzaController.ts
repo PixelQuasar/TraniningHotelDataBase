@@ -4,7 +4,7 @@ const pizzaController = express.Router()
 
 pizzaController.get('/', async (req: express.Request, res: express.Response) => {
     try {
-        const productArray = pizzaSchema.find({}).lean().exec()
+        const productArray = await pizzaSchema.find({}).lean().exec()
         res.send(productArray).status(200)
     }
     catch (error) {
@@ -15,7 +15,7 @@ pizzaController.get('/', async (req: express.Request, res: express.Response) => 
 
 pizzaController.get('/:id', async (req: express.Request, res: express.Response) => {
     try {
-        const productArray = pizzaSchema.find({_id: req.params.id}).lean().exec()
+        const productArray = await pizzaSchema.find({_id: req.params.id}).lean().exec()
         res.send(productArray).status(200)
     }
     catch (error) {
@@ -26,7 +26,7 @@ pizzaController.get('/:id', async (req: express.Request, res: express.Response) 
 
 pizzaController.get('/category/:type', async (req: express.Request, res: express.Response) => {
     try {
-        const productArray = pizzaSchema.find({type: req.params.type}).lean().exec()
+        const productArray = await pizzaSchema.find({type: req.params.type}).lean().exec()
         res.send(productArray).status(200)
     }
     catch (error) {
