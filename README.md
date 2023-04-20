@@ -5,16 +5,16 @@ API for your projects
 
 ## Navigate:
 
-[Hotel database](#api/hotelDB)
+[Hotel database](#hotelDB)
 
-[Shop database](#api/shopDB)
+[Shop database](#shopDB)
 
 [Users database](#users)
 
-[Pizza database](#api/pizzaDB)
+[Pizza database](#pizzaDB)
 
 
-# api/hotelDB
+# hotelDB
 
 ## api/hotelDB/hotels
 
@@ -225,7 +225,7 @@ response:
 
 
 
-# api/shopDB
+# shopDB
 
 ## api/shopDB/products
 
@@ -414,7 +414,7 @@ delete users request
 ### response:
     [ User ]
 
-# api/pizzaDB
+# pizzaDB
 
 ### Schema (Product): 
     name: string,
