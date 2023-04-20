@@ -48,4 +48,20 @@ pizzaController.post('/addProduct', async (req: express.Request, res: express.Re
     }
 })
 
+pizzaController.post('/deleteByFilter', async (req: express.Request, res: express.Response) => {
+    try {
+        const filter = req.body.filter
+        if (filter) {
+            const mongoResponce = await pizzaSchema.deleteMany(filter)
+            res.send(mongoResponce).status(200)
+            return
+        }
+        res.send("No filter").status(404)
+    } 
+    catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
 export default pizzaController
