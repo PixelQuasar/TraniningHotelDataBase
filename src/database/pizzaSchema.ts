@@ -2,10 +2,11 @@ import { Schema, model } from "mongoose"
 
 interface IPizza {
     name: string,
+    type: "burger" | "pizza" | "fries"
     time?: number,
     sizes?: Array<string>,
     price: number,
-    photosURL?: Array<string>
+    photosURL?: Array<string>,
 }
 
 const PizzaSchema = new Schema<IPizza>({
@@ -28,6 +29,10 @@ const PizzaSchema = new Schema<IPizza>({
     photosURL: {
         type: [String],
         required: false
+    },
+    type: {
+        type: String,
+        required: true
     }
 })
 

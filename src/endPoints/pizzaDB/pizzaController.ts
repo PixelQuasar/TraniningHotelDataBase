@@ -8,7 +8,29 @@ pizzaController.get('/', async (req: express.Request, res: express.Response) => 
         res.send(productArray).send(200)
     }
     catch (error) {
-        console.log("PIZZACONTROLLER:", error)
+        console.log("PIZZACONTROLLER - INDEX:", error)
+        res.send(error).status(503)
+    }
+})
+
+pizzaController.get('/:id', async (req: express.Request, res: express.Response) => {
+    try {
+        const productArray = pizzaSchema.find({_id: req.params.id}).lean().exec()
+        res.send(productArray).send(200)
+    }
+    catch (error) {
+        console.log("PIZZACONTROLLER - /:ID:", error)
+        res.send(error).status(503)
+    }
+})
+
+pizzaController.get('/category/:type', async (req: express.Request, res: express.Response) => {
+    try {
+        const productArray = pizzaSchema.find({type: req.params.type}).lean().exec()
+        res.send(productArray).send(200)
+    }
+    catch (error) {
+        console.log("PIZZACONTROLLER - /:TYPE:", error)
         res.send(error).status(503)
     }
 })
@@ -21,7 +43,7 @@ pizzaController.post('/addProduct', async (req: express.Request, res: express.Re
         res.send(saveResponse).status(200)
     }
     catch (error) {
-        console.log(error)
+        console.log("PIZZACONTROLLER - ADDPRODUCT:", error)
         res.send(error).status(500)
     }
 })
