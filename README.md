@@ -6,9 +6,13 @@ API for your projects
 ## Navigate:
 
 [Hotel database](#api/hotelDB)
+
 [Shop database](#api/shopDB)
+
 [Users database](#users)
+
 [Pizza database](#api/shopDB)
+
 
 # api/hotelDB
 
