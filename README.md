@@ -11,7 +11,7 @@ API for your projects
 
 [Users database](#users)
 
-[Pizza database](#api/shopDB)
+[Pizza database](#api/pizzaDB)
 
 
 # api/hotelDB
