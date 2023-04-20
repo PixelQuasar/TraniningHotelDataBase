@@ -5,7 +5,7 @@ const pizzaController = express.Router()
 pizzaController.get('/', async (req: express.Request, res: express.Response) => {
     try {
         const productArray = pizzaSchema.find({}).lean().exec()
-        res.send(productArray).send(200)
+        res.send(productArray).status(200)
     }
     catch (error) {
         console.log("PIZZACONTROLLER - INDEX:", error)
@@ -16,7 +16,7 @@ pizzaController.get('/', async (req: express.Request, res: express.Response) => 
 pizzaController.get('/:id', async (req: express.Request, res: express.Response) => {
     try {
         const productArray = pizzaSchema.find({_id: req.params.id}).lean().exec()
-        res.send(productArray).send(200)
+        res.send(productArray).status(200)
     }
     catch (error) {
         console.log("PIZZACONTROLLER - /:ID:", error)
@@ -27,7 +27,7 @@ pizzaController.get('/:id', async (req: express.Request, res: express.Response) 
 pizzaController.get('/category/:type', async (req: express.Request, res: express.Response) => {
     try {
         const productArray = pizzaSchema.find({type: req.params.type}).lean().exec()
-        res.send(productArray).send(200)
+        res.send(productArray).status(200)
     }
     catch (error) {
         console.log("PIZZACONTROLLER - /:TYPE:", error)
