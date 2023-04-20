@@ -13,4 +13,17 @@ pizzaController.get('/', async (req: express.Request, res: express.Response) => 
     }
 })
 
+pizzaController.post('/addProduct', async (req: express.Request, res: express.Response) => {
+    try {
+        const body = req.body
+        const newProduct = new pizzaSchema(body)
+        const saveResponse = await newProduct.save()
+        res.send(saveResponse).status(200)
+    }
+    catch (error) {
+        console.log(error)
+        res.send(error).status(500)
+    }
+})
+
 export default pizzaController
