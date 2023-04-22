@@ -44,10 +44,9 @@ productController.get('/getProducts', async (req: express.Request, res: express.
 
 productController.post('/postProductFilter', async (req: express.Request, res: express.Response) => {
     try {
-        const filter = req.params ? req.params : {}
+        const filter = req.body.filter
 
         const array = await productSchema.find(filter ? filter : {}).lean().exec()
-        const pageNumber = Math.ceil(array.length / 20)
         res.send(array).status(200)
     } catch (error) {
         console.log(error)
