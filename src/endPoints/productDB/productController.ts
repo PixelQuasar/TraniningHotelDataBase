@@ -21,7 +21,7 @@ productController.get('/getAllProducts', async (req: express.Request, res: expre
         const array = await productSchema.find({}).lean().exec()
 
         const pageNumber = Math.ceil(array.length / 20)
-        res.send({ pages: pageNumber, payload: array.slice((page - 1) * 20, 20) }).status(200)
+        res.send({ pages: pageNumber, payload: array.slice((page - 1) * 20, page * 20) }).status(200)
     }
     catch (error) {
         console.log(error)
