@@ -17,8 +17,8 @@ productController.get('/getProductById/:productId', async (req: express.Request,
 
 productController.get('/getAllProducts', async (req: express.Request, res: express.Response) => {
     try {
-        console.log(req.params)
-        const page = req.params.page ? parseInt(req.params.page) : 1
+        console.log(req.query)
+        const page = req.query.page ? parseInt(req.query.page) : 1
         const array = await productSchema.find({}).lean().exec()
 
         const pageNumber = Math.ceil(array.length / 20)
