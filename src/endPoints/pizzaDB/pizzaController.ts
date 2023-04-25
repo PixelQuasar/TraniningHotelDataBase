@@ -40,7 +40,7 @@ pizzaController.get('/searchProducts/:searchString', async (req: express.Request
         const searchString = req.params.searchString
         console.log(searchString)
         pizzaSchema.createIndexes({name: "text", type: "text"} as any)
-        const array = await pizzaSchema.findOne({$text: {$search: searchString}}).exec()
+        const array = await pizzaSchema.find({$text: {$search: searchString}}).exec()
         res.send(array).status(200)
     } catch (error) {
         console.log(error)
