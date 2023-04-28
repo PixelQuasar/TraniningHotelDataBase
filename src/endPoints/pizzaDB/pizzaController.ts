@@ -24,6 +24,15 @@ pizzaController.get('/:id', async (req: express.Request, res: express.Response) 
     }
 })
 
+pizzaController.get('/demo', async (req: express.Request, res: express.Response) => {
+    try {
+        res.send("demo!").status(200)
+    }
+    catch (error) {
+        res.send(error).status(503)
+    }
+})
+
 pizzaController.get('/category/:type', async (req: express.Request, res: express.Response) => {
     try {
         const productArray = await pizzaSchema.find({type: req.params.type}).lean().exec()

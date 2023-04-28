@@ -17,16 +17,38 @@ const addToCart = (state, id, price) => {
     return array
 }
 
+const increment = (state, id) => {
+    return [...state].map((product) => {
+        if (product.id == id) return {...product, quantity: product.quantity+1}
+        return product
+    })
+}
+
+const decrement = (state, id) => {
+    return [...state].map((product) => {
+        if (product.id == id) return {...product, quantity: product.quantity-1}
+        return product
+    }).filter((product) => product.quantity > 0)
+}
+
 let array = []
 
 array = addToCart(array, "123", 100)
 array = addToCart(array, "123", 100)
 array = addToCart(array, "456", 150)
 
+array = decrement(array, "123")
+array = decrement(array, "123")
+array = decrement(array, "123")
 
 console.log(array)
 
-return {
-    ...state,
-    cart: state.cart ? addToCart(state.cart, action.id, action.price) : [{id: action.id, quantity: 1, price: action.price}]
-}
+const summary = array.map((product) => product.price).reduce((a, b) => a + b, 0)
+
+console.log(summary)
+
+
+a = prompt()
+b = prompt()
+
+console.log(a + b)
