@@ -4,7 +4,7 @@ import mongoose from 'mongoose'
 
 dotenv.config()
 
-console.log(process.env)
+console.log("DOTENV FILE DATA:", process.env)
 
 console.log(process.env.mongoURL)
 mongoose.connect(process.env.mongoURL as string)
