@@ -41,5 +41,26 @@ postController.post('/deleteByFilter', async (req: express.Request, res: express
     }
 })
 
+postController.get('/', async (req: express.Request, res: express.Response) => {
+    try {
+        const productArray = await postSchema.find({}).lean().exec()
+        res.send(productArray).status(200)
+    }
+    catch (error) {
+        console.log("POSTCONTROLLER - INDEX:", error)
+        res.send(error).status(503)
+    }
+})
+
+postController.get('/:id', async (req: express.Request, res: express.Response) => {
+    try {
+        const productArray = await postSchema.find({_id: req.params.id}).lean().exec()
+        res.send(productArray).status(200)
+    }
+    catch (error) {
+        console.log("POSTCONTROLLER - /:ID:", error)
+        res.send(error).status(503)
+    }
+})
 
 export default postController

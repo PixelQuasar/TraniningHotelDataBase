@@ -7,6 +7,7 @@ import userController from './endPoints/hotelDB/userController';
 import productController from './endPoints/productDB/productController';
 import cors from 'cors'
 import pizzaController from './endPoints/pizzaDB/pizzaController';
+import postController from './endPoints/postDB/postController';
 
 class App {
   public express
@@ -39,6 +40,8 @@ class App {
     this.express.use('/api/shopDB/products', productController)
 
     this.express.use('/api/pizzaDB/products', pizzaController)
+
+    this.express.use('/api/postDB/posts', postController)
     
   }
 }
