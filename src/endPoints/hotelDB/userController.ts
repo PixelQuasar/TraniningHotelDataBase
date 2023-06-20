@@ -43,11 +43,11 @@ userController.post('/register', async (req: express.Request, res: express.Respo
         console.log(newUser)
         const saveResponse = await newUser.save()
         console.log(saveResponse)
-        res.send(saveResponse).status(200)
+        res.status(200).send(saveResponse)
     }
     catch (error) {
         console.log(error)
-        res.send(error).status(500)
+        res.status(500).send(error)
     }
 })
 
