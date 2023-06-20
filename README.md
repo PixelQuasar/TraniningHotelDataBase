@@ -376,7 +376,7 @@ register user request
         "password": "qwerty123",
         "tryPassword": "qwerty123",
         "email": "max281115@gmai.com",
-        "phoneHumber": "+77477234220",
+        "phoneNumber": "+77477234220",
         "fullName": "Maxim Yermolayev"
     }
 

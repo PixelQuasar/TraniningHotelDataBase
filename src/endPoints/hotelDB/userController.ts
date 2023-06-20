@@ -36,7 +36,7 @@ userController.post('/register', async (req: express.Request, res: express.Respo
             login: body.login,
             password: body.password,
             email: body.email,
-            phoneNumber: body.phoneHumber,
+            phoneNumber: body.phoneNumber,
             fullName: body.fullName
         }
         const newUser = new userSchema(content)
