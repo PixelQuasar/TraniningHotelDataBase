@@ -14,7 +14,7 @@ const PostSchema = new Schema<IPost>({
     images: [String],
     views: Number,
     likes: Number,
-    authorId: Number,
+    authorId: String,
     active: Boolean
 })
 
