@@ -41,6 +41,18 @@ postController.post('/deleteByFilter', async (req: express.Request, res: express
     }
 })
 
+postController.get('/getUserPosts/:userId', async (req: express.Request, res: express.Response) => {
+    try {
+        const userId = req.params.userId
+        const mongoResponce = await postSchema.find({authorId: userId})
+        res.status(200).send(mongoResponce)
+    } 
+    catch (error) {
+        console.log(error)
+        res.status(500).send(error)
+    }
+})
+
 postController.get('/', async (req: express.Request, res: express.Response) => {
     try {
         const productArray = await postSchema.find({}).lean().exec()
