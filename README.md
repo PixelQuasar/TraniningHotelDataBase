@@ -288,6 +288,18 @@ Searches and returns products by search string
 ### response:
     [ Array ]
 
+## GET /byFilter/:categoryName
+Get products by specific category
+
+### parameters:
+    categoryName - name of category
+
+### body:
+    none
+
+### response:
+    [ Array ]
+
 ## POST /addProduct
 Add new hotel
 
