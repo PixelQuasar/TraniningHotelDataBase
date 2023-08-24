@@ -43,6 +43,19 @@ productController.get('/getProducts', async (req: express.Request, res: express.
     }
 })
 
+productController.get('/byFilter/:categoryName', async (req: express.Request, res: express.Response) => {
+    try{
+        const filter = { category: req.params.categoryName }
+        const mongoResponse = await productSchema.find(filter ? filter : {})
+
+        res.send(mongoResponse)
+        
+    } catch (error) {
+        console.log("PRODUCTS BY FILTER ERROR: ", error)
+        res.send(error).status(400)
+    }
+})
+
 productController.post('/postProductFilter', async (req: express.Request, res: express.Response) => {
     try {
         const filter = req.body.filter
@@ -59,8 +72,8 @@ productController.get('/searchProducts/:searchString', async (req: express.Reque
     try {
         const searchString = req.params.searchString
         console.log(searchString)
-        const array = await productSchema.find({$text: {$search: searchString}}).exec()
-        res.send(array).status(200)
+        const array = await productSchema.find({$text: {$search: searchString}})
+        res.send(array)
     } catch (error) {
         console.log(error)
         res.send(error).status(500)
